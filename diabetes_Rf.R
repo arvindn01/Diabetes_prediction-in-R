@@ -3,7 +3,7 @@ library(caTools)
 data(PimaIndiansDiabetes)
 PimaIndiansDiabetes
 for (split_number in c(1:100)){
-  train_ind <- sample.split(PimaIndiansDiabetes$Pregnancies,SplitRatio = 0:8)
+  train_ind <- sample.split(PimaIndiansDiabetes$Pregnancies,SplitRatio = 2/3)
   test_ind <- !train_ind
   rf <- randomForest(as.factor(Outcome) ~ ., data = PimaIndiansDiabetes[train_ind,],ntree=100)
   train_accuracy <- sum(diag(rf$confusion))/sum(train_ind)
